@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Machine à laver",
+        "status" : "on"
+    },
+    {
+        "id": 2,
+        "name": "Ordinateur",
+        "status" : "off"
+    },
+    {
+        "id": 3,
+        "name": "Télévision",
+        "status": "on"
+    }
+]
