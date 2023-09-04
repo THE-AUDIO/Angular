@@ -1,0 +1,9 @@
+<div class="auth">
+    <h2>Authentification</h2>
+<button *ngIf="!AuthStatus" (click)="onSignIn()" style="background-color: green;">
+    se connecter
+</button>
+<button *ngIf="AuthStatus" (click)="onSignOut()" style="background-color: red;">
+    se deconnecter
+</button>
+</div>
