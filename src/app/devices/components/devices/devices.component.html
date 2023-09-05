@@ -1,12 +1,16 @@
-<!-- <div class="list" [ngClass]="{'danger': this.appareilsStatus === 'éteint', 'succes': this.appareilsStatus === 'allumé'}">
-    <div style="height: 20px; width: 20px; background-color: red;" *ngIf="appareilsStatus === 'éteint'" class="carre"></div> 
-    <h4 [ngStyle]="{ color:getColor() }">
-        appareil : {{ appareilsName }} --status: {{getStatus()}} --{{ indexOfAppreil }}
-    </h4>
-    <input type="" class="in" [(ngModel)]="appareilsName">
-
-    <div class="btn">
-        <button (click)="onSwitchOne()" [disabled]="appareilsStatus==='allumé'" style="background-color: green;">allumer</button>
-        <button (click)="OffSwitchOne()" [disabled]="appareilsStatus==='éteint'" style="background-color:red;">eteindre</button>
-    </div>
-</div> -->
+<input type="" class="in" placeholder="Rechercher un appareil ***"
+    [formControl]="deviceCtrl">
+<ng-container *ngIf="devices$ | async as devices">
+    <ng-container *ngFor="let device of devices">
+        <div class="list" [ngClass]="{'danger': !getStatus(device.status), 'succes': getStatus(device.status)}">
+            <div *ngIf="!getStatus(device.status)" class="carre"></div>
+            <h4 [ngStyle]="{color: getColor(device.status)}" (click)="onNavigateToSingle(device)">
+                <em>appareil</em>: {{device.name}} | <em>status</em>: {{device.status}} | <em>id</em>: {{device.id}}
+            </h4>
+            <div class="btn">
+                <button (click)="onSwitchOne(device)" 
+                    [ngStyle]="{backgroundColor: getColor(device.status)}">{{device.status | titlecase}}</button>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>

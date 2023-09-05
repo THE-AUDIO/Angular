@@ -6,6 +6,8 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { SingleDeviceComponent } from './components/single-device/single-device.component';
 import { ViewDeviceComponent } from './components/view-device/view-device.component';
 import { DevicesService } from './services/devices.service';
+import { SharedModule } from '../shared/shared.module';
+import { SingleDevicesService } from './services/single-device.service';
 
 
 @NgModule({
@@ -16,10 +18,12 @@ import { DevicesService } from './services/devices.service';
   ],
   imports: [
     CommonModule,
-    DevicesRoutingModule
+    DevicesRoutingModule,
+    SharedModule
   ],
   providers: [
-    DevicesService
+    DevicesService,
+    SingleDevicesService
   ]
 })
 export class DevicesModule { }

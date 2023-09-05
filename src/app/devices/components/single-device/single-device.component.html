@@ -1,1 +1,5 @@
-<p>single-device works!</p>
+<ng-container *ngFor="let data of device$ | async">
+    <h2>{{data.name}}</h2>
+    <p>{{data.status}}</p>
+    <a routerLink="/devices">retour à la liste</a>
+</ng-container>
